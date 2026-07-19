@@ -90,8 +90,19 @@ header {{visibility: hidden;}}
 .stTabs {{
     margin-bottom: 18px !important;
 }}
+/* Force the row that directly wraps the tab-list to center its content --
+   baseweb's tab-list row is itself a flex/full-width element, so relying
+   on width:fit-content + margin:auto alone isn't always enough to move it
+   away from the left edge. Making the wrapping row a centered flex
+   container guarantees the pill actually sits in the middle. */
+.stTabs > div:first-child,
+.stTabs [data-baseweb="tab-list"]:has(+ *)  {{
+    display: flex !important;
+    justify-content: center !important;
+}}
 .stTabs [data-baseweb="tab-list"],
 div[data-baseweb="tab-list"] {{
+    display: flex !important;
     gap: 6px !important;
     background: #FFFFFF !important;
     padding: 8px !important;
@@ -861,8 +872,8 @@ with tab1:
     """, unsafe_allow_html=True)
 
     # ==================== CHART 1: Sentiment Breakdown ====================
-    st.markdown('<div class="section-title">Sentiment Breakdown</div>', unsafe_allow_html=True)
     with chart_card():
+        st.markdown('<div class="section-title">Sentiment Breakdown</div>', unsafe_allow_html=True)
         st.markdown('<div class="chart-subtitle">Opini Publik</div>', unsafe_allow_html=True)
         c1, c2 = st.columns(2)
         for col, brand in zip([c1, c2], [brand_a, brand_b]):
@@ -891,8 +902,8 @@ with tab1:
     st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
 
     # ==================== CHART 2: Engagement Trend Over Time ====================
-    st.markdown('<div class="section-title">Engagement Trend Over Time</div>', unsafe_allow_html=True)
     with chart_card():
+        st.markdown('<div class="section-title">Engagement Trend Over Time</div>', unsafe_allow_html=True)
         # Only look at the last 12 months, anchored on today's real date --
         # this keeps the chart to "the past year" even if the CSV contains
         # stray/mistyped future or past dates that would otherwise stretch
@@ -938,8 +949,8 @@ with tab1:
     st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
 
     # ==================== CHART 3: Platform Engagements ====================
-    st.markdown('<div class="section-title">Platform Engagements</div>', unsafe_allow_html=True)
     with chart_card():
+        st.markdown('<div class="section-title">Platform Engagements</div>', unsafe_allow_html=True)
         platform_data = df.groupby(["Platform", "Brand"])["Engagements"].sum().reset_index()
         fig3 = px.bar(
             platform_data, x="Platform", y="Engagements", color="Brand",
@@ -959,11 +970,11 @@ with tab1:
     st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
 
     # ==================== CHART 4: Media Type Mix ====================
-    st.markdown('<div class="section-title">Media Type Mix</div>', unsafe_allow_html=True)
-    c3, c4 = st.columns(2)
-    for col, brand in zip([c3, c4], [brand_a, brand_b]):
-        with col:
-            with chart_card():
+    with chart_card():
+        st.markdown('<div class="section-title">Media Type Mix</div>', unsafe_allow_html=True)
+        c3, c4 = st.columns(2)
+        for col, brand in zip([c3, c4], [brand_a, brand_b]):
+            with col:
                 st.markdown(f'<div class="chart-subtitle">Format Konten</div><div class="chart-title">{brand}</div>', unsafe_allow_html=True)
                 sub = df[df["Brand"] == brand]
                 media_counts = sub["Media_Type"].value_counts().reset_index()
@@ -987,8 +998,8 @@ with tab1:
     st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
 
     # ==================== CHART 5: Top 5 Locations ====================
-    st.markdown('<div class="section-title">Top 5 Locations by Engagement</div>', unsafe_allow_html=True)
     with chart_card():
+        st.markdown('<div class="section-title">Top 5 Locations by Engagement</div>', unsafe_allow_html=True)
         loc_data = df.groupby("Location")["Engagements"].sum().nlargest(5).reset_index()
         fig5 = px.bar(
             loc_data, x="Location", y="Engagements",
