@@ -92,19 +92,6 @@ header {{visibility: hidden;}}
 }}
 .stTabs [data-baseweb="tab-list"],
 div[data-baseweb="tab-list"] {{
-    display: flex !important;
-    gap: 6px !important;
-    background: #FFFFFF !important;
-    padding: 8px !important;
-    border-radius: 14px !important;
-    box-shadow: 0 2px 10px rgba(20, 30, 60, 0.05) !important;
-    width: fit-content !important;
-    margin: 0 auto 18px auto !important;
-    justify-content: center !important;
-    border-bottom: none !important;
-}}
-.stTabs [data-baseweb="tab-list"],
-div[data-baseweb="tab-list"] {{
     gap: 6px !important;
     background: #FFFFFF !important;
     padding: 8px !important;
@@ -135,19 +122,15 @@ div[data-baseweb="tab-list"] button {{
     color: #FFFFFF !important;
     font-weight: 700 !important;
 }}
+/* Hilangkan garis indikator bawah (highlight bar) yang bawaan Streamlit */
 .stTabs [data-baseweb="tab-highlight"],
 .stTabs [data-baseweb="tab-border"],
 div[data-baseweb="tab-highlight"],
-div[data-baseweb="tab-border"],
-.stTabs [role="tablist"] + div,
-.stTabs hr {{
+div[data-baseweb="tab-border"] {{
     display: none !important;
     background: transparent !important;
     height: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
 }}
-
 /* ---------------- Header row (transparent, no white card) ---------------- */
 .dash-header {{
     background: transparent;
