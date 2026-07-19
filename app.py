@@ -88,8 +88,9 @@ header {{visibility: hidden;}}
 
 /* ---------------- Top Navigation Bar (centered, first thing on page) ---------------- */
 .stTabs {{
-    margin-bottom: 18px;
+    margin-bottom: 18px !important;
 }}
+.stTabs [data-baseweb="tab-list"],
 div[data-baseweb="tab-list"] {{
     gap: 6px !important;
     background: #FFFFFF !important;
@@ -99,8 +100,10 @@ div[data-baseweb="tab-list"] {{
     width: fit-content !important;
     margin: 0 auto 18px auto !important;
     justify-content: center !important;
+    border-bottom: none !important;
 }}
-div[data-baseweb="tab-list"] button[data-baseweb="tab"] {{
+.stTabs [data-baseweb="tab"],
+div[data-baseweb="tab-list"] button {{
     background-color: transparent !important;
     border-radius: 10px !important;
     padding: 8px 22px !important;
@@ -108,20 +111,25 @@ div[data-baseweb="tab-list"] button[data-baseweb="tab"] {{
     font-size: 13.5px !important;
     color: #4A5468 !important;
     margin: 0 !important;
+    border: none !important;
 }}
-div[data-baseweb="tab-list"] button[aria-selected="true"] {{
+.stTabs [aria-selected="true"] {{
     background-color: #10182B !important;
     border-radius: 10px !important;
 }}
-div[data-baseweb="tab-list"] button[aria-selected="true"] p {{
+.stTabs [aria-selected="true"] p,
+.stTabs [aria-selected="true"] * {{
     color: #FFFFFF !important;
     font-weight: 700 !important;
 }}
-div[data-baseweb="tab-highlight"] {{
-    display: none !important;
-}}
+/* Hilangkan garis indikator bawah (highlight bar) yang bawaan Streamlit */
+.stTabs [data-baseweb="tab-highlight"],
+.stTabs [data-baseweb="tab-border"],
+div[data-baseweb="tab-highlight"],
 div[data-baseweb="tab-border"] {{
     display: none !important;
+    background: transparent !important;
+    height: 0 !important;
 }}
 
 /* ---------------- Header row (transparent, no white card) ---------------- */
