@@ -90,30 +90,38 @@ header {{visibility: hidden;}}
 .stTabs {{
     margin-bottom: 18px;
 }}
-.stTabs [data-baseweb="tab-list"] {{
-    gap: 6px;
-    background: #FFFFFF;
-    padding: 8px;
-    border-radius: 14px;
-    box-shadow: 0 2px 10px rgba(20, 30, 60, 0.05);
-    width: fit-content;
-    margin: 0 auto;
-    justify-content: center;
+div[data-baseweb="tab-list"] {{
+    gap: 6px !important;
+    background: #FFFFFF !important;
+    padding: 8px !important;
+    border-radius: 14px !important;
+    box-shadow: 0 2px 10px rgba(20, 30, 60, 0.05) !important;
+    width: fit-content !important;
+    margin: 0 auto 18px auto !important;
+    justify-content: center !important;
 }}
-.stTabs [data-baseweb="tab"] {{
-    background-color: transparent;
-    border-radius: 10px;
-    padding: 8px 22px;
-    font-weight: 600;
-    font-size: 13.5px;
-    color: #4A5468;
+div[data-baseweb="tab-list"] button[data-baseweb="tab"] {{
+    background-color: transparent !important;
+    border-radius: 10px !important;
+    padding: 8px 22px !important;
+    font-weight: 600 !important;
+    font-size: 13.5px !important;
+    color: #4A5468 !important;
+    margin: 0 !important;
 }}
-.stTabs [aria-selected="true"],
-.stTabs [aria-selected="true"] p,
-.stTabs [aria-selected="true"] * {{
+div[data-baseweb="tab-list"] button[aria-selected="true"] {{
     background-color: #10182B !important;
+    border-radius: 10px !important;
+}}
+div[data-baseweb="tab-list"] button[aria-selected="true"] p {{
     color: #FFFFFF !important;
     font-weight: 700 !important;
+}}
+div[data-baseweb="tab-highlight"] {{
+    display: none !important;
+}}
+div[data-baseweb="tab-border"] {{
+    display: none !important;
 }}
 
 /* ---------------- Header row (transparent, no white card) ---------------- */
