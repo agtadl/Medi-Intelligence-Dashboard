@@ -89,14 +89,6 @@ header {{visibility: hidden;}}
 /* ---------------- Top Navigation Bar (centered, first thing on page) ---------------- */
 .stTabs {{
     margin-bottom: 18px !important;
-    width: 100% !important;
-    display: flex !important;
-    justify-content: center !important;
-}}
-.stTabs > div {{
-    width: 100% !important;
-    display: flex !important;
-    justify-content: center !important;
 }}
 .stTabs [data-baseweb="tab-list"],
 div[data-baseweb="tab-list"] {{
@@ -130,18 +122,14 @@ div[data-baseweb="tab-list"] button {{
     color: #FFFFFF !important;
     font-weight: 700 !important;
 }}
-/* Hilangkan SEMUA garis/underline/indikator bawaan Streamlit di tab */
+/* Hilangkan garis indikator bawah (highlight bar) yang bawaan Streamlit */
 .stTabs [data-baseweb="tab-highlight"],
 .stTabs [data-baseweb="tab-border"],
 div[data-baseweb="tab-highlight"],
-div[data-baseweb="tab-border"],
-.stTabs [role="tablist"] + div,
-.stTabs hr {{
+div[data-baseweb="tab-border"] {{
     display: none !important;
     background: transparent !important;
     height: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
 }}
 
 /* ---------------- Header row (transparent, no white card) ---------------- */
