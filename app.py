@@ -90,29 +90,17 @@ header {{visibility: hidden;}}
 .stTabs {{
     margin-bottom: 18px !important;
 }}
-/* Force whichever element is the DIRECT parent of the tab-list to become
-   a centered flex container. This uses :has() to grab the real parent
-   regardless of how many wrapper divs Streamlit/baseweb inserts, so it
-   doesn't depend on guessing the exact DOM depth. The previous attempt
-   incorrectly targeted the tab-list itself instead of its parent, so it
-   never actually centered anything. */
-div:has(> [data-baseweb="tab-list"]) {{
-    display: flex !important;
-    justify-content: center !important;
-    width: 100% !important;
-}}
 .stTabs [data-baseweb="tab-list"],
 div[data-baseweb="tab-list"] {{
-    display: inline-flex !important;
-    flex: 0 0 auto !important;
+    display: flex !important;
+    width: 100% !important;
+    justify-content: center !important;
     gap: 6px !important;
     background: #FFFFFF !important;
     padding: 8px !important;
     border-radius: 14px !important;
     box-shadow: 0 2px 10px rgba(20, 30, 60, 0.05) !important;
-    width: fit-content !important;
-    margin: 0 auto 18px auto !important;
-    justify-content: center !important;
+    margin: 0 0 18px 0 !important;
     border-bottom: none !important;
 }}
 .stTabs [data-baseweb="tab"],
