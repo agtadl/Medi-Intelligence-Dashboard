@@ -90,19 +90,21 @@ header {{visibility: hidden;}}
 .stTabs {{
     margin-bottom: 18px !important;
 }}
-/* Force the row that directly wraps the tab-list to center its content --
-   baseweb's tab-list row is itself a flex/full-width element, so relying
-   on width:fit-content + margin:auto alone isn't always enough to move it
-   away from the left edge. Making the wrapping row a centered flex
-   container guarantees the pill actually sits in the middle. */
-.stTabs > div:first-child,
-.stTabs [data-baseweb="tab-list"]:has(+ *)  {{
+/* Force whichever element is the DIRECT parent of the tab-list to become
+   a centered flex container. This uses :has() to grab the real parent
+   regardless of how many wrapper divs Streamlit/baseweb inserts, so it
+   doesn't depend on guessing the exact DOM depth. The previous attempt
+   incorrectly targeted the tab-list itself instead of its parent, so it
+   never actually centered anything. */
+div:has(> [data-baseweb="tab-list"]) {{
     display: flex !important;
     justify-content: center !important;
+    width: 100% !important;
 }}
 .stTabs [data-baseweb="tab-list"],
 div[data-baseweb="tab-list"] {{
-    display: flex !important;
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
     gap: 6px !important;
     background: #FFFFFF !important;
     padding: 8px !important;
@@ -310,7 +312,7 @@ div[data-baseweb="tab-border"] {{
 
 div[data-testid="stVerticalBlockBorderWrapper"] {{
     position: relative !important;
-    background: rgba(255, 255, 255, 0.55) !important;
+    background: rgba(255, 255, 255, 0.94) !important;
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border: 1px solid rgba(255, 255, 255, 0.65) !important;
