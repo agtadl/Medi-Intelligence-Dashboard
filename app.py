@@ -89,14 +89,19 @@ header {{visibility: hidden;}}
 /* ---------------- Top Navigation Bar (centered, first thing on page) ---------------- */
 .stTabs {{
     margin-bottom: 18px !important;
-    width: 100% !important;
-    display: flex !important;
-    justify-content: center !important;
 }}
-.stTabs > div {{
-    width: 100% !important;
+.stTabs [data-baseweb="tab-list"],
+div[data-baseweb="tab-list"] {{
     display: flex !important;
+    gap: 6px !important;
+    background: #FFFFFF !important;
+    padding: 8px !important;
+    border-radius: 14px !important;
+    box-shadow: 0 2px 10px rgba(20, 30, 60, 0.05) !important;
+    width: fit-content !important;
+    margin: 0 auto 18px auto !important;
     justify-content: center !important;
+    border-bottom: none !important;
 }}
 .stTabs [data-baseweb="tab-list"],
 div[data-baseweb="tab-list"] {{
